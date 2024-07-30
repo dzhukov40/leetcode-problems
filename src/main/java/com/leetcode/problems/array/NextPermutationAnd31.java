@@ -10,7 +10,7 @@ package com.leetcode.problems.array;
 public class NextPermutationAnd31 {
 
 /*
-31. Next Permutation
+31. Next Permutation -> [ https://leetcode.com/problems/next-permutation/ ]
 Medium
 Topics
 Companies
@@ -53,10 +53,66 @@ Constraints:
  */
 
 
+  /*
+    Описание решения: лексический порядок для чисел это какое в результате число мы получаем.
+    Получается мы какбы хотим наименьшее возможное число из комбинаций которые остались:
+    -> [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1]
+        123   <  132    < 213   <    231     <   312   <   321
+    ---
+    1. каждое число сравнимо и может быть равно боьше или меньше
+    2. числа в массиве могут повторятся
+    ---
+    как получить следующее число?
+
+   */
+
   public void nextPermutation(int[] nums) {
+    int n = nums.length;
+    int k = -1;
 
+    // Step 1: Find the largest index k such that nums[k] < nums[k + 1]
+    // идем с конца массива и находим число -> 1.4.7 - тут найдем 4 так как число справа выше
+    for (int i = n - 1; i > 0; i--) {
+      if (nums[i - 1] < nums[i]) {
+        k = i - 1;
+        break;
+      }
+    }
 
+    // If no such index exists, the permutation is the last permutation
+    if (k == -1) {
+      reverse(nums, 0, n - 1);
+      return;
+    }
 
+    // Step 2: Find the largest index l greater than k such that nums[k] < nums[l]
+    int l = -1;
+    for (int i = n - 1; i > k; i--) {
+      if (nums[i] > nums[k]) {
+        l = i;
+        break;
+      }
+    }
+
+    // Step 3: Swap the value of nums[k] with that of nums[l]
+    swap(nums, k, l);
+
+    // Step 4: Reverse the sequence from nums[k + 1] to the end
+    reverse(nums, k + 1, n - 1);
+  }
+
+  private void swap(int[] nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+  }
+
+  private void reverse(int[] nums, int start, int end) {
+    while (start < end) {
+      swap(nums, start, end);
+      start++;
+      end--;
+    }
   }
 
 
