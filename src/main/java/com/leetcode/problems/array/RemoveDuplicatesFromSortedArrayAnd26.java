@@ -74,8 +74,33 @@ nums is sorted in non-decreasing order.
    */
 
   public int removeDuplicates(int[] nums) {
+    if (nums.length == 0) return 0;
 
+    int j = 1; // Pointer for the next unique position
 
-    return 0;
+    // Iterate over the array starting from the second element
+    for (int i = 1; i < nums.length; i++) {
+      // If the current element is different from the previous one
+      if (nums[i] != nums[i - 1]) {
+        nums[j] = nums[i]; // Move it to the next unique position
+        j++; // Increment the unique position pointer
+      }
+    }
+
+    return j; // The length of the unique elements
+  }
+
+  public static void main(String[] args) {
+    RemoveDuplicatesFromSortedArrayAnd26 rd = new RemoveDuplicatesFromSortedArrayAnd26();
+
+    int[] nums1 = {1, 1, 2};
+    int k1 = rd.removeDuplicates(nums1);
+    System.out.println(k1); // Output: 2
+    System.out.println(java.util.Arrays.toString(nums1)); // Output: [1, 2, ...]
+
+    int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+    int k2 = rd.removeDuplicates(nums2);
+    System.out.println(k2); // Output: 5
+    System.out.println(java.util.Arrays.toString(nums2)); // Output: [0, 1, 2, 3, 4, ...]
   }
 }
