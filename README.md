@@ -80,8 +80,33 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
 ```
 
 
+# --------------------------
 
 
+# Stak
+## tips
+- (1) пример использования стека: "var stack = new Stack<Integer>();" и "stack.push(var);" и "stack.pop();"
+```java
+  public boolean isPalindrome(ListNode head) {
+    var stack = new Stack<Integer>();
+    var next = head;
+     
+    while (next != null) {
+      stack.push(next.val);
+      next = next.next;
+    }
+      
+    next = head;
+    while (next != null) {
+      if (stack.pop() != next.val) {
+        return false;
+      }
+      next = next.next;
+    }
+     
+    return true;
+  }
+```
 
 
 
