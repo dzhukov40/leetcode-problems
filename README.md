@@ -11,7 +11,7 @@
     nums[j] = temp;
   }
 ```
-- (3) использовать ф-ию помошник: реверс порядка элементов в подмассиве
+- (3) ф-ия помошник: реверс порядка элементов в подмассиве
 ```java
   private void reverse(int[] nums, int start, int end) {
     while (start < end) {
@@ -19,6 +19,12 @@
       start++;
       end--;
     }
+  }
+```
+- (4) ф-ия помошник: получить центральный элемент в подмассиве или (* )левый из двух в центре
+```java
+  private int getMidlElementIndex(int[] nums, int start, int end) {
+    return start + (end - start) / 2;
   }
 ```
 
@@ -58,6 +64,7 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
 }
 ```
 - (2) Для написание рекурсии важно определить конец рекурсии
+ 
 
 
 
