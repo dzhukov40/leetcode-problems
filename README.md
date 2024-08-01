@@ -64,7 +64,34 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
 }
 ```
 - (2) Для написание рекурсии важно определить конец рекурсии
- 
+
+
+
+# --------------------------
+
+
+# Linked list
+## tips
+- (1) ф-ия помошник: инвертируем односвязанный список
+```java
+  // мы каждый раз добавляем элемент перед самым первым элементом
+  public ListNode reverseList(ListNode head) {
+    ListNode prev = null;
+    ListNode current = head;
+    ListNode nextNode;
+
+    while (current != null) {
+      nextNode = current.next; // Store next node
+      current.next = prev; // Reverse the current node's pointer
+      prev = current; // Move prev to current
+      current = nextNode; // Move to next node
+    }
+
+    return prev; // New head of the reversed list
+  }
+```
+
+
 
 
 
