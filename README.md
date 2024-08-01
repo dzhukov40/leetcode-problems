@@ -28,6 +28,17 @@
   }
 ```
 - (5) если надо вмержить один массив в другой, вмерживаем с конца есл там свободные места
+- (6) ф-ия помощник: посчитаем число повторений в "HashMap"
+```java
+  void test() {
+    var charCount = new HashMap<Character, Integer>();
+    for (char c : s.toCharArray()) {
+      charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+    }
+  }
+```
+
+
 
 # --------------------------
 
