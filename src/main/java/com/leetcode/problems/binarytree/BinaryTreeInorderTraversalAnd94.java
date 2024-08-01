@@ -2,7 +2,6 @@ package com.leetcode.problems.binarytree;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * TODO: add description.
@@ -53,7 +52,7 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
 
 
 
-  public class TreeNode {
+  public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -68,16 +67,27 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
 
   public List<Integer> inorderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList<>();
-    if (root == null) {
-      return result;
-    }
-
-    // порядок тут такой чтобы не отсортировано вернуть значения
-    result.addAll(inorderTraversal(root.left));
-    result.add(root.val);
-    result.addAll(inorderTraversal(root.right));
-
+    inorderHelper(root, result);
     return result;
+  }
+
+  private void inorderHelper(TreeNode node, List<Integer> accumulator) {
+    if (node != null) {
+      // порядок тут такой чтобы не отсортировано вернуть значения
+      inorderHelper(node.left, accumulator);
+      accumulator.add(node.val);
+      inorderHelper(node.right, accumulator);
+    }
+  }
+
+  public static void main(String[] args) {
+    // Test case 1
+    TreeNode root1 = new TreeNode(1);
+    root1.right = new TreeNode(2);
+    root1.right.left = new TreeNode(3);
+
+    BinaryTreeInorderTraversalAnd94 solution = new BinaryTreeInorderTraversalAnd94();
+    System.out.println(solution.inorderTraversal(root1)); // Output: [1, 3, 2]
   }
 
 }

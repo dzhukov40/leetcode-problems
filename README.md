@@ -27,33 +27,35 @@
 
 # Binary tree
 ## tips
-- (1) как пройти рекурсивно по бинарному дереву и получить все значения
+- (1) для рекурсивного обхода надо использовать "аккумулятор"
 ```java
-  public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
-  public List<Integer> inorderTraversal(TreeNode root) {
-    List<Integer> result = new ArrayList<>();
-    if (root == null) {
-      return result;
-    }
-
-    result.add(root.val);
-    result.addAll(inorderTraversal(root.left));
-    result.addAll(inorderTraversal(root.right));
-
-    return result;
+  public static class TreeNode {
+  int val;
+  TreeNode left;
+  TreeNode right;
+  TreeNode() {}
+  TreeNode(int val) { this.val = val; }
+  TreeNode(int val, TreeNode left, TreeNode right) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
   }
+}
+
+public List<Integer> inorderTraversal(TreeNode root) {
+  List<Integer> result = new ArrayList<>();
+  inorderHelper(root, result);
+  return result;
+}
+
+private void inorderHelper(TreeNode node, List<Integer> accumulator) {
+  if (node != null) {
+    // порядок тут такой чтобы не отсортировано вернуть значения
+    inorderHelper(node.left, accumulator);
+    accumulator.add(node.val);
+    inorderHelper(node.right, accumulator);
+  }
+}
 ```
 - (2) и
 
