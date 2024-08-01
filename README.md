@@ -57,7 +57,7 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
   }
 }
 ```
-- (2) и
+- (2) Для написание рекурсии важно определить конец рекурсии
 
 
 
