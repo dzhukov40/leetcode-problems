@@ -63,7 +63,7 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
 }
 ```
 - (2) Для написание рекурсии важно определить конец рекурсии
-
+- (3) "new TreeSet<Integer>(Collections.reverseOrder());" - ипользуя коллекцию можно задать обратный порядок
 
 
 # --------------------------
