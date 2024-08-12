@@ -119,5 +119,10 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
   }
 ```
 
+# Dynamic Programming
+## tips
+- (1) смотрим на результат как на фунцию от предыдущих значений
+- (2) рекурсия зло но не всегда легко раскрыть рекурсию
+
 
 
