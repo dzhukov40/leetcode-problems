@@ -150,6 +150,14 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
     return false;
   }
 ```
+- (2) ф-я помошник: стандартный статический сетод
+```java
+public void example() {
+  var x = 1;
+  var y = 2;
+  var maxValue = Math.max(x, y);
+}
+```
 
 
 
