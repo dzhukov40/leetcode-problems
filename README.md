@@ -161,5 +161,24 @@ public void example() {
 
 
 
+# Sorting
+## tips
+- (1) ф-я помошник: можно вычислить через XOR лишний символ
+```java
+  public char findTheDifference(String s, String t) {
+    char result = 0;
+    for (char c : s.toCharArray()) {
+      result ^= c;  // Apply XOR with each character
+    }
+
+    for (char c : t.toCharArray()) {
+      result ^= c;  // Apply XOR with each character
+    }
+
+    return result;
+  }
+```
+
+
 
 
