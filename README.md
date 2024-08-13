@@ -119,10 +119,39 @@ private void inorderHelper(TreeNode node, List<Integer> accumulator) {
   }
 ```
 
+
+
 # Dynamic Programming
 ## tips
 - (1) смотрим на результат как на фунцию от предыдущих значений
 - (2) рекурсия зло но не всегда легко раскрыть рекурсию
 - (3) может будет полезно вспомнить о побитовых операциях "i >> 1" или "i << 1"
+
+
+
+
+# Sliding Window
+## tips
+- (1) можно просто идти по массиву и класть все в мапу и каждый раз сверять с тем что уже в мапе.
+```java
+  public boolean containsNearbyDuplicate(int[] nums, int k) {
+    HashMap<Integer, Integer> map = new HashMap<>();
+
+    // Loop through the array
+    for (int i = 0; i < nums.length; i++) {
+      // Тут вся магия просто смотрим удовлетворяет ли новое число условиям
+      if (map.containsKey(nums[i]) && (i - map.get(nums[i])) <= k) {
+        return true;
+      }
+      // Для нашего задания мы можем переписывать значения так только ближайшие элементы имеют шанс
+      map.put(nums[i], i);
+    }
+
+    return false;
+  }
+```
+
+
+
 
 
